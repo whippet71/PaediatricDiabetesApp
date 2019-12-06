@@ -51,7 +51,7 @@
 
 <script>
 import store from '../store'
-import { cacheService, dateService } from '../_services'
+import { patientService, cacheService, dateService } from '../_services'
 import { authHeader } from '../_helpers'
 import localforage from 'localforage'
 import toast from '../_mixins/toast'
@@ -65,7 +65,7 @@ export default {
   ],
   mounted: function() {
     window.Offline.check()
-    this.useCached = window.Offline.state === 'down'
+    this.useCached = (window.Offline.state === 'down')
     // If offline, prompt for password and use cached patient list
     if (this.useCached) {
       if (this.$store.state.havePatientData) {
@@ -77,7 +77,6 @@ export default {
       }
     } else {
       // If online, load new patient list
-      // TODO: only if don't have list already!
       this.updatePatientList()
     }
   },
@@ -112,20 +111,9 @@ export default {
       this.loadingPatientList = true
 
       // Get the authentication token to send with the request
-      authHeader()
-        .then(header => {
-          const config = {
-            headers: header,
-            onUploadProgress: progressEvent =>
-              this.updateProgress(progressEvent.loaded)
-          }
-          return this.$root.axios.get(
-            `${process.env.VUE_APP_API_URL}/Patient`,
-            config
-          )
-        })
+      patientService.getPatients()
         .then(result => {
-          // We got a refreshed auth token back, store it
+          // We get a refreshed auth token back with the patient list, store it
           localforage.setItem('user-token', result.headers['x-new-token'])
 
           this.patientData = result.data.patients
