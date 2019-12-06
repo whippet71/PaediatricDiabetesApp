@@ -71,7 +71,7 @@ import router from '../router'
 import store from '../store'
 import localforage from 'localforage'
 import { authHeader } from '../_helpers'
-import { uploadService } from '../_services'
+import { patientService, uploadService } from '../_services'
 import PatientDetails from '@/components/PatientDetails.vue'
 import ContactList from '@/components/ContactList.vue'
 import ContactModal from '@/components/ContactModal.vue'
@@ -157,21 +157,11 @@ export default {
     getContacts() {
       this.loadingContacts = true
       // Get the authentication token to send with the request
-      authHeader()
-        .then(header => {
-          const config = {
-            headers: header
-          }
-          return this.$root.axios.get(
-            `${process.env.VUE_APP_API_URL}/Contact/${this.patient.Id}`,
-            config
-          )
-        })
+      patientService.getContacts(this.patient.Id)
         .then(result => {
           this.contacts = result.data
         })
         .catch(error => {
-          // TODO refactor axios requests into separate service
           if (error.response && error.response.status === 401) {
             // token has expired, user needs to login again
             this.$router.push({ name: 'login' })
