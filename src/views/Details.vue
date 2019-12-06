@@ -5,9 +5,11 @@
         <b-col cols="9" class="text-left">
           <div class="patient-name">{{patient.FirstName}} {{patient.LastName}}</div>
         </b-col>
-        <b-col cols="3" v-if="online">
-          <b-button variant="primary" @click="editDetails">Edit details</b-button>
-        </b-col>
+        <transition name="fade">
+          <b-col cols="3" v-if="online">
+            <b-button variant="primary" @click="editDetails">Edit details</b-button>
+          </b-col>
+        </transition>
       </b-row>
 
       <patient-details :patient="patient"></patient-details>
@@ -274,7 +276,13 @@ export default {
 </script>
 
 <style scoped>
-  .patient-name {
-    font-size: x-large;
-  }
+.patient-name {
+  font-size: x-large;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -26,9 +26,11 @@
         <b-td>{{getStaffMember(contact.StaffId)}}</b-td>
         <b-td>{{contact.Time}}</b-td>
         <b-td>{{contact.NumberOfContacts}}</b-td>
-        <b-td v-show="online">
-          <b-button variant="primary" @click="$emit('edit', contact.Id)">Edit</b-button>
-        </b-td>
+        <transition name="fade">
+          <b-td v-show="online">
+            <b-button variant="primary" @click="$emit('edit', contact.Id)">Edit</b-button>
+          </b-td>
+        </transition>
       </b-tr>
     </b-tbody>
   </b-table-simple>
@@ -74,5 +76,11 @@ export default {
 <style scoped lang="scss">
 .heading {
   font-weight: bold;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
