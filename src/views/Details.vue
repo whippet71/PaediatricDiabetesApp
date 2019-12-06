@@ -202,6 +202,7 @@ export default {
     contactSubmitted(form) {
       this.showContactModal = false
       if (this.contactId === 0) {
+        window.Offline.check()
         // Adding new contact
         // If online, post to server, else save in cache
         if (this.online) {
@@ -211,6 +212,7 @@ export default {
         }
       } else {
         // Editing existing contact
+        // User will only get option to do this if network is up, assume it still is
         uploadService.updateContact(form)
           .then(result => {
             this.showToast('Patient contact updated')

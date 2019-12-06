@@ -64,6 +64,7 @@ export default {
     toast
   ],
   mounted: function() {
+    window.Offline.check()
     this.useCached = window.Offline.state === 'down'
     // If offline, prompt for password and use cached patient list
     if (this.useCached) {
