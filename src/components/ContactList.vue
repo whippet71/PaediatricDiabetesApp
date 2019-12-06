@@ -26,11 +26,18 @@
         <b-td>{{getStaffMember(contact.StaffId)}}</b-td>
         <b-td>{{contact.Time}}</b-td>
         <b-td>{{contact.NumberOfContacts}}</b-td>
-        <transition name="fade">
-          <b-td v-show="online">
-            <b-button variant="primary" @click="$emit('edit', contact.Id)">Edit</b-button>
-          </b-td>
-        </transition>
+        <!-- Add/remove classes instead of using v-show/v-if so that the table column 
+        maintains it's width regardless of button visibility -->
+        <b-td>
+          <b-button 
+            class="fade-button" 
+            :class="{ 'fade-button-visible': online, 'fade-button-hidden': !online }" 
+            variant="primary" 
+            @click="$emit('edit', contact.Id)"
+          >
+            Edit
+          </b-button>
+        </b-td>
       </b-tr>
     </b-tbody>
   </b-table-simple>
@@ -76,6 +83,17 @@ export default {
 <style scoped lang="scss">
 .heading {
   font-weight: bold;
+}
+.fade-button {
+  transition: visibility 1s, opacity 1s;
+}
+.fade-button-visible {
+  visibility: visible;
+  opacity: 1;
+}
+.fade-button-hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity 1s;
