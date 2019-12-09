@@ -65,7 +65,7 @@ export default {
   ],
   mounted: function() {
     window.Offline.check()
-    this.useCached = (window.Offline.state === 'down')
+    this.useCached = (window.Offline.state === 'down' || !navigator.onLine)
     // If offline, prompt for password and use cached patient list
     if (this.useCached) {
       if (this.$store.state.havePatientData) {
@@ -86,7 +86,7 @@ export default {
       loadingPatientList: false,
       patientData: {},
       password: '',
-      max: 100
+      max: 100,
     }
   },
   methods: {

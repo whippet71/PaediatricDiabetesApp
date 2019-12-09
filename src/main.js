@@ -29,7 +29,8 @@ window.Offline.options = {
   requests: false,
   checks: {
     xhr: {
-      url: offlineUrl
+      url: offlineUrl,
+      type: 'GET'
     }
   }
 }
