@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import localforage from 'localforage'
 import store from '../store'
 
@@ -12,10 +13,11 @@ function login (username, password) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password })
+    //data: JSON.stringify({ username, password })
+    data: { username, password }
   }
 
-  return fetch(`${process.env.VUE_APP_API_URL}/Login`, requestOptions)
+  return Vue.axios(`${process.env.VUE_APP_API_URL}/Login`, requestOptions)
     .then(handleResponse)
     .then(json => {
       // login successful if there's a jwt token in the response
@@ -53,17 +55,15 @@ function logout () {
 // }
 
 function handleResponse (response) {
-  return response.json().then(json => {
-    if (!response.ok) {
-      if (response.status === 401) {
-        // auto logout if 401 response returned from api
-        logout()
-        location.reload(true)
-      }
-
-      return Promise.reject(json.Message)
+  if (response.status != 200) {
+    if (response.status === 401) {
+      // auto logout if 401 response returned from api
+      logout()
+      location.reload(true)
     }
 
-    return json
-  })
+    return Promise.reject(response.statusText)
+  }
+
+  return response.data
 }
