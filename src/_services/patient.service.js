@@ -19,6 +19,7 @@ function getPatients() {
       )
     })
     .catch(error => {
+      // Caller to log error
       return Promise.reject(error)
     }) 
 }
@@ -35,6 +36,7 @@ function getContacts(id) {
       )
     })
     .catch(error => {
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     }) 
 }

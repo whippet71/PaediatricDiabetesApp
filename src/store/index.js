@@ -5,7 +5,7 @@ import localforage from 'localforage'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: { status: {}, uploadPending: false, patientData: {}, havePatientData: false, user: '', isAdmin: false },
+  state: { status: {}, uploadPending: false, patientData: {}, havePatientData: false, user: '', loggingIn: false, isAdmin: false, errorList: [] },
   mutations: {
     loginRequest (state, user) {
       state.status = { loggingIn: true }
@@ -16,7 +16,7 @@ export default new Vuex.Store({
       localforage.setItem('user', user)
     },
     loginFailure (state) {
-      state.status = {}
+      state.status.loggingIn = false
     },
     logout (state) {
       state.status = {}
@@ -42,6 +42,10 @@ export default new Vuex.Store({
     },
     setAdmin(state, isAdmin) {
       state.isAdmin = isAdmin
+    },
+    logError(state, error) {
+      let now = new Date()
+      state.errorList.push({ index: Date.now(), date: now, error: error })
     }
   }
 })

@@ -1,4 +1,5 @@
 import localforage from 'localforage'
+import store from '../store'
 const crypto = require('crypto')
 
 export const cacheService = {
@@ -45,6 +46,7 @@ function decryptPatientData(results, password) {
       return new TextDecoder().decode(decrypted)
     })
     .catch((error) => {
+      store.commit('logError', error.toString())
       throw error
     })
 }

@@ -123,6 +123,8 @@ export default {
           if (error.response && error.response.status === 401) {
             // token has expired, user needs to login again
             this.$router.push({ name: 'login' })
+          } else {
+            store.commit('logError', error.toJSON())
           }
           this.showToast('Error loading patient list: ' + error, 'danger')
         })

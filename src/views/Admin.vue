@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import localforage from 'localforage';
-import toast from '../_mixins/toast';
+import localforage from 'localforage'
+import toast from '../_mixins/toast'
 import { uploadService } from '../_services'
 
 export default {
@@ -66,13 +66,13 @@ export default {
       newUserDisplayName: '',
       newUserIsAdmin: false,
       users: {}
-    };
+    }
   },
   computed: {},
   created() {
     localforage.getItem('staff').then(staff => {
       this.users = staff;
-    });
+    })
   },
   methods: {
     reset() {
@@ -164,5 +164,5 @@ export default {
         })     
     }
   }
-};
+}
 </script>

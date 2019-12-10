@@ -2,8 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import About from '../views/About.vue'
 import Admin from '../views/Admin.vue'
 import Details from '../views/Details.vue'
+import Errors from '../views/Errors.vue'
 import localforage from 'localforage'
 
 Vue.use(VueRouter)
@@ -14,9 +16,11 @@ export const router = new VueRouter({
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/login', name: 'login', component: Login },
+    { path: '/about', name: 'about', component: About },
     { path: '/admin', name: 'admin', component: Admin },
     { path: '/details', name: 'patientdetails', component: Details },
-    // Add other routes here TODO
+    { path: '/errorList', name: 'errorList', component: Errors },
+    // Add other routes here
 
     // otherwise redirect to home
     { path: '*', redirect: '/' }
@@ -25,7 +29,7 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login']
+  const publicPages = ['/login','/about','/errorList']
   const adminPages = ['/admin']
   const authRequired = !publicPages.includes(to.path)
   const adminPage = adminPages.includes(to.path)

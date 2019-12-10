@@ -19,6 +19,7 @@ function saveContact(newContact) {
       localforage.setItem('contacts', contacts)
     })
     .catch((error) => {
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
 }
@@ -35,6 +36,7 @@ function uploadPendingContacts(patientId) {
       return Promise.resolve(localforage.removeItem('contacts'))
     })
     .catch((error) => {
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
 }
@@ -52,7 +54,7 @@ function uploadContacts(contacts) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
 }
@@ -70,7 +72,7 @@ function updateContact(contact) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
 }
@@ -88,7 +90,7 @@ function updateDetails(patient) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })  
 }
@@ -119,7 +121,7 @@ function uploadGeneric(name, url) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     }) 
 }
@@ -137,7 +139,7 @@ function uploadUser(login, displayName, isAdmin) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     }) 
 }
@@ -154,7 +156,7 @@ function disableUser(id) {
       ))
     })
     .catch(error => {
-      console.log('upload error')
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     }) 
 }

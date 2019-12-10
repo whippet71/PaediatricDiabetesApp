@@ -81,10 +81,11 @@ export default {
             router.push('/')
           },
           (error) => {
+            store.commit('loginFailure')
             this.alertType = 'danger'
             this.message = 'Login failed. Are your username and password correct?'
-            console.dir(error)
-            store.commit('loginFailure')
+            // Hide the user's password in the error message!
+            error.config.data = "************"
           }
         )
       }

@@ -13,6 +13,7 @@
           <b-navbar-nav>
             <b-nav-item to="/">Patient List</b-nav-item>
             <b-nav-item to="/admin" :disabled="!online || !isAdmin">Admin</b-nav-item>
+            <b-nav-item to="/about">About</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->

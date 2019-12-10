@@ -39,6 +39,7 @@ function login (username, password) {
       return json
     })
     .catch((error) => {
+      store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
 }
