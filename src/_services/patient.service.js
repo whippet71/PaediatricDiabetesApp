@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from '../store'
 import { authHeader } from '../_helpers'
 
 export const patientService = {
