@@ -38,6 +38,9 @@ function login (username, password) {
 
       return json
     })
+    .catch((error) => {
+      return Promise.reject(error)
+    })
 }
 
 function logout () {

@@ -82,7 +82,8 @@ export default {
           },
           (error) => {
             this.alertType = 'danger'
-            this.message = 'Login failed: ' + error
+            this.message = 'Login failed. Are your username and password correct?'
+            console.dir(error)
             store.commit('loginFailure')
           }
         )
