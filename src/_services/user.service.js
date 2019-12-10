@@ -39,6 +39,8 @@ function login (username, password) {
       return json
     })
     .catch((error) => {
+      // Hide the user's password in the error message!
+      error.config.data = "************"
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })

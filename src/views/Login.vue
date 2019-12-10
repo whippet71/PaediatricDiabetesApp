@@ -84,8 +84,6 @@ export default {
             store.commit('loginFailure')
             this.alertType = 'danger'
             this.message = 'Login failed. Are your username and password correct?'
-            // Hide the user's password in the error message!
-            error.config.data = "************"
           }
         )
       }
