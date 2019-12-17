@@ -100,9 +100,6 @@ export default {
         // pending as the router moves the user to the home page
         this.uploadPendingContacts()
       }
-      if (to.name === 'home') {
-
-      }
     }
   },
   created: function() {
