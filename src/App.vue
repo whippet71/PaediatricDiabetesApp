@@ -18,12 +18,12 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right v-if="username">
+            <b-nav-item-dropdown right v-if="username" class="username-menu-item">
               <!-- Using 'button-content' slot -->
               <template v-slot:button-content>
                 <em>{{username}}</em>
               </template>
-              <b-dropdown-item href="#" v-on:click="logout">Log Out</b-dropdown-item>
+              <b-dropdown-item href="#" v-on:click="logout" class="logout-btn">Log Out</b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
         </b-collapse>

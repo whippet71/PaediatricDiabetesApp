@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('login', () => {
+context('logout', () => {
   specify('load login page', () => {
     cy.visit('https://localhost:8080/login')
     cy.contains('Please login')
@@ -12,5 +12,11 @@ context('login', () => {
     cy.url().should('not.contain', 'login')
     cy.contains('Current referrals')
     cy.contains('Patient list updated') // Wait for toast
+  })
+  specify('click logout link', () => {
+    cy.get('.username-menu-item').click()
+    cy.get('.logout-btn').click()
+    cy.contains('Please login')
+    cy.url().should('contain', 'login')
   })
 })
