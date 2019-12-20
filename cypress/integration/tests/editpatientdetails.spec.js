@@ -2,7 +2,7 @@
 
 context('edit patient details', () => {
   specify('load login page', () => {
-    cy.visit('https://localhost:8080/login')
+    cy.visit('./login')
     cy.contains('Please login')
   })
   specify('login', () => {

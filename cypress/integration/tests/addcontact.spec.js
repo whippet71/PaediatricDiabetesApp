@@ -4,7 +4,7 @@ let initialRows = 0;
 
 context('add contact', () => {
   specify('load login page', () => {
-    cy.visit('https://localhost:8080/login')
+    cy.visit('./login')
     cy.contains('Please login')
   })
   specify('login', () => {
