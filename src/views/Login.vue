@@ -83,7 +83,11 @@ export default {
           (error) => {
             store.commit('loginFailure')
             this.alertType = 'danger'
-            this.message = 'Login failed. Are your username and password correct?'
+            if (error.response && error.response.statusText) {
+              this.message = error.response.statusText
+            } else {
+              this.message = 'Login failed. Are your username and password correct?'
+            }
           }
         )
       }
