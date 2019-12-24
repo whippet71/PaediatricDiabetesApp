@@ -12,4 +12,9 @@ context('login', () => {
     cy.url().should('contain', 'login')
     cy.contains('Login failed')
   })
+  specify('patient list unavailable', () => {
+    cy.contains('Patient List').click()
+    cy.url().should('contain', 'login')
+    cy.contains('Please login')
+  })
 })
