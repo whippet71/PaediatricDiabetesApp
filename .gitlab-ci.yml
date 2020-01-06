@@ -40,7 +40,7 @@ run-cypress-tests:
     # print CI environment variables for reference
     #- $(npm bin)/print-env CI
     # start the server in the background
-    - npm run start:ci &
+    - npm run serve &
     # run Cypress test in load balancing mode
     - npx cypress run
   artifacts:
