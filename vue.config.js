@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
         https: true
     },
-    lintOnSave: process.env.NODE_ENV !== 'production',
+    lintOnSave: false, //process.env.NODE_ENV !== 'production',
     pwa: {
         name: 'Paediatric Diabetes',
         themeColor: '#6d3176',
