@@ -46,7 +46,7 @@ run-cypress-tests:
   artifacts:
     when: on_failure
     paths:
-      - cypress/videos/*.mp4
-      - cypress/screenshots/*.png
+      - /builds/whippet71/PaediatricDiabetesApp/cypress/videos/**/*.mp4
+      - /builds/whippet71/PaediatricDiabetesApp/cypress/screenshots/**/*.png
     expire_in: 1 day
 
