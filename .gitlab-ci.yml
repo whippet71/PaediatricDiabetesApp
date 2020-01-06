@@ -29,7 +29,7 @@ install:
     # useful to make sure we are not carrying around old versions
     - npx cypress cache path
     - npx cypress cache list
-    #- $(npm bin)/print-env CI
+    - $(npm bin)/print-env CI
     #- npm run cy:verify
 
 # all jobs that actually run tests can use the same definition
@@ -44,9 +44,9 @@ run-cypress-tests:
     # run Cypress test in load balancing mode
     - npx cypress run
   artifacts:
-    when: always
+    when: on_failure
     paths:
-      - cypress/videos/**/*.mp4
-      - cypress/screenshots/**/*.png
+      - cypress/videos/*.mp4
+      - cypress/screenshots/*.png
     expire_in: 1 day
 
