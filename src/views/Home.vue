@@ -52,7 +52,6 @@
 <script>
 import store from '../store'
 import { patientService, cacheService, dateService } from '../_services'
-import { authHeader } from '../_helpers'
 import localforage from 'localforage'
 import toast from '../_mixins/toast'
 
@@ -86,7 +85,7 @@ export default {
       loadingPatientList: false,
       patientData: {},
       password: '',
-      max: 100,
+      max: 100
     }
   },
   methods: {

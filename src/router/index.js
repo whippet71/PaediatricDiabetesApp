@@ -29,7 +29,7 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login','/about','/errorList']
+  const publicPages = ['/login', '/about', '/errorList']
   const adminPages = ['/admin']
   const authRequired = !publicPages.includes(to.path)
   const adminPage = adminPages.includes(to.path)
@@ -41,13 +41,13 @@ router.beforeEach((to, from, next) => {
 
       if (adminPage) {
         localforage.getItem('isAdmin')
-        .then(admin => {
-          if (!admin) {
-            return next('/') 
-          } else {
-            next()
-          }
-        })
+          .then(admin => {
+            if (!admin) {
+              return next('/')
+            } else {
+              next()
+            }
+          })
       } else {
         next()
       }

@@ -67,6 +67,19 @@
         "env": {
           "jest": true
         }
+      },
+      {
+        "files": [
+          "**/offline.min.js"
+        ],
+        "rules": {
+          "no-sequences": "off",
+          "no-undef": "off",
+          "no-return-assign": "off",
+          "no-unused-expressions": "off",
+          "no-unused-vars": "off",
+          "new-cap": "off"
+        }
       }
     ]
   },

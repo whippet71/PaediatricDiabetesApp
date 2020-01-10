@@ -26,13 +26,13 @@
         <b-td>{{getStaffMember(contact.StaffId)}}</b-td>
         <b-td>{{contact.Time}}</b-td>
         <b-td>{{contact.NumberOfContacts}}</b-td>
-        <!-- Add/remove classes instead of using v-show/v-if so that the table column 
+        <!-- Add/remove classes instead of using v-show/v-if so that the table column
         maintains it's width regardless of button visibility -->
         <b-td>
-          <b-button 
-            class="fade-button" 
-            :class="{ 'fade-button-visible': online, 'fade-button-hidden': !online }" 
-            variant="primary" 
+          <b-button
+            class="fade-button"
+            :class="{ 'fade-button-visible': online, 'fade-button-hidden': !online }"
+            variant="primary"
             @click="$emit('edit', contact.Id)"
           >
             Edit

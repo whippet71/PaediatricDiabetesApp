@@ -22,7 +22,6 @@ Vue.config.productionTip = false
 
 // Prevent offline.js from automatically resending ajax requests
 
-
 let offlineUrl = (process.env.NODE_ENV === 'production') ? 'https://ydh-iis7.ydh.nhs.uk/PaediatricDiabetes/api/Test' : 'favicon.ico'
 
 window.Offline.options = {

@@ -33,13 +33,13 @@ function decryptPatientData(results, password) {
 
   // Generate the hash from the user's password
   // length is in BYTES - want 32 bytes for key and then a further 16 for the iv
-  var all = crypto.pbkdf2Sync(passwordBuffer, saltBuffer, iterations, 48, 'sha1') 
+  var all = crypto.pbkdf2Sync(passwordBuffer, saltBuffer, iterations, 48, 'sha1')
   let hash = all.slice(0, 32)
-  let Iv = all.slice(32,48)
+  let Iv = all.slice(32, 48)
 
   // Now decrypt the data
   return window.crypto.subtle.importKey('raw', hash, { name: 'AES-GCM', iv: Iv }, false, ['decrypt'])
-    .then((key) => {      
+    .then((key) => {
       return window.crypto.subtle.decrypt({ 'name': 'AES-GCM', iv: Iv }, key, enc)
     })
     .then((decrypted) => {

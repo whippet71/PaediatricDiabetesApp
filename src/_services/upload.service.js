@@ -92,7 +92,7 @@ function updateDetails(patient) {
     .catch(error => {
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
-    })  
+    })
 }
 
 function uploadContactType(name) {
@@ -102,7 +102,6 @@ function uploadContactType(name) {
 function uploadActivityType(name) {
   return uploadGeneric(name, `${process.env.VUE_APP_API_URL}/Activity/`)
 }
-
 
 function uploadLocation(name) {
   return uploadGeneric(name, `${process.env.VUE_APP_API_URL}/Location/`)
@@ -123,7 +122,7 @@ function uploadGeneric(name, url) {
     .catch(error => {
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
-    }) 
+    })
 }
 
 function uploadUser(login, displayName, isAdmin) {
@@ -141,7 +140,7 @@ function uploadUser(login, displayName, isAdmin) {
     .catch(error => {
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
-    }) 
+    })
 }
 
 function disableUser(id) {
@@ -158,5 +157,5 @@ function disableUser(id) {
     .catch(error => {
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
-    }) 
+    })
 }

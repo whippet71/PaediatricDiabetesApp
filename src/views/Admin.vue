@@ -42,7 +42,7 @@
       <b-form-checkbox v-model="newUserIsAdmin" class="ml-2 mr-2">Is admin?</b-form-checkbox>
       <b-button type="submit" variant="primary">Add</b-button>
     </b-form>
-    
+
   </b-container>
 </template>
 
@@ -71,7 +71,7 @@ export default {
   computed: {},
   created() {
     localforage.getItem('staff').then(staff => {
-      this.users = staff;
+      this.users = staff
     })
   },
   methods: {
@@ -100,7 +100,7 @@ export default {
         })
         .finally(() => {
           this.reset()
-        })     
+        })
     },
     addactivityType() {
       uploadService.uploadActivityType(this.newActivityType)
@@ -118,7 +118,7 @@ export default {
         })
         .finally(() => {
           this.reset()
-        })     
+        })
     },
     addLocation() {
       uploadService.uploadLocation(this.newLocation)
@@ -136,14 +136,14 @@ export default {
         })
         .finally(() => {
           this.reset()
-        })     
+        })
     },
     disableUser() {
       uploadService.disableUser(this.userToDisable)
         .then(result => {
           this.showToast('User disabled')
           this.reset()
-        })     
+        })
     },
     addUser() {
       uploadService.uploadUser(this.newUserLogin, this.newUserDisplayName, this.newUserIsAdmin)
@@ -161,7 +161,7 @@ export default {
         })
         .finally(() => {
           this.reset()
-        })     
+        })
     }
   }
 }

@@ -13,7 +13,7 @@ function login (username, password) {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    //data: JSON.stringify({ username, password })
+    // data: JSON.stringify({ username, password })
     data: { username, password }
   }
 
@@ -40,7 +40,7 @@ function login (username, password) {
     })
     .catch((error) => {
       // Hide the user's password in the error message!
-      error.config.data = "************"
+      error.config.data = '************'
       store.commit('logError', error.toJSON())
       return Promise.reject(error)
     })
@@ -61,7 +61,7 @@ function logout () {
 // }
 
 function handleResponse (response) {
-  if (response.status != 200) {
+  if (response.status !== 200) {
     if (response.status === 401) {
       // auto logout if 401 response returned from api
       logout()

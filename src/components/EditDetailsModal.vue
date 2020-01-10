@@ -66,7 +66,6 @@ export default {
       }
       // Notify parent of form submission
       this.$emit('submitted', updates)
-
     },
     cancel() {
       this.$emit('cancelled')

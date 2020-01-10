@@ -7,9 +7,6 @@
 </template>
 
 <script>
-import localforage from 'localforage'
-
-
 export default {
   name: 'errors',
   computed: {

@@ -53,7 +53,7 @@ export default {
 
   data: function() {
     return {
-      online: false,
+      online: false
     }
   },
   computed: {
@@ -136,7 +136,7 @@ export default {
         if (admin) {
           store.commit('setAdmin', admin)
         }
-      })     
+      })
   }
 }
 </script>

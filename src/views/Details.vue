@@ -67,10 +67,8 @@
 </template>
 
 <script>
-import router from '../router'
 import store from '../store'
 import localforage from 'localforage'
-import { authHeader } from '../_helpers'
 import { patientService, uploadService } from '../_services'
 import PatientDetails from '@/components/PatientDetails.vue'
 import ContactList from '@/components/ContactList.vue'
@@ -96,7 +94,7 @@ export default {
       return
     }
 
-    window.Offline.on('up', () => { 
+    window.Offline.on('up', () => {
       this.goOnline()
     })
     window.Offline.on('down', () => { this.online = false })
@@ -232,7 +230,7 @@ export default {
         .catch(error => {
           this.showToast('Error updating patient details: ' + error, 'danger')
         })
-      },
+    },
     detailsCancelled() {
       this.showEditDetailsModal = false
     },
